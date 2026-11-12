@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block title %}Página no encontrada{% endblock %}
+
+{% block content %}
+<div style="text-align:center; padding:3rem 1rem;">
+    <h1 style="font-size:4rem; margin:0; color:#1e3a8a;">404</h1>
+    <h2>La página que buscas no existe</h2>
+    <p class="suave">Revisa la dirección o vuelve al inicio.</p>
+    <p>
+        <a href="{% url 'home' %}" class="boton">Ir al inicio</a>
+        <a href="{% url 'catalogo' %}" class="boton secundario">Ver catálogo</a>
+    </p>
+</div>
+{% endblock %}

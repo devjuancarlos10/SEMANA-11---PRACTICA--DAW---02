@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Catálogo Tecnológico{% endblock %}</title>
+    <link rel="icon" href="data:,">
+    <style>
+        :root {
+            --primario: #1e3a8a;
+            --primario-claro: #3b82f6;
+            --fondo: #f8fafc;
+            --texto: #0f172a;
+            --texto-suave: #64748b;
+            --borde: #e2e8f0;
+            --exito: #15803d;
+            --alerta: #b45309;
+            --peligro: #b91c1c;
+        }
+        * { box-sizing: border-box; }
+        body {
+            font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+            margin: 0;
+            background: var(--fondo);
+            color: var(--texto);
+            line-height: 1.5;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        .contenedor { width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 1rem; }
+        header, footer { background: var(--primario); color: white; }
+        header .contenedor {
+            display: flex; align-items: center; justify-content: space-between;
+            flex-wrap: wrap; gap: .75rem; padding-top: 1rem; padding-bottom: 1rem;
+        }
+        .marca { font-weight: 700; font-size: 1.15rem; color: white; text-decoration: none; }
+        nav a {
+            color: #dbeafe; text-decoration: none; padding: .4rem .8rem;
+            border-radius: 6px; font-weight: 500;
+        }
+        nav a:hover { background: rgba(255,255,255,.12); color: white; }
+        nav a.activo { background: white; color: var(--primario); }
+        main { flex: 1; padding: 2rem 0; }
+        footer { margin-top: 2rem; font-size: .9rem; }
+        footer .contenedor { padding-top: 1rem; padding-bottom: 1rem; text-align: center; }
+
+        h1, h2 { line-height: 1.2; }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+        .card {
+            background: white; border: 1px solid var(--borde);
+            padding: 1.25rem; border-radius: 10px;
+            display: flex; flex-direction: column; gap: .4rem;
+            transition: box-shadow .15s, transform .15s;
+        }
+        .card:hover { box-shadow: 0 8px 24px rgba(15,23,42,.08); transform: translateY(-2px); }
+        .card h3 { margin: 0; font-size: 1.1rem; }
+        .etiqueta {
+            display: inline-block; font-size: .75rem; font-weight: 600;
+            padding: .15rem .55rem; border-radius: 999px;
+            background: #dbeafe; color: var(--primario); width: fit-content;
+        }
+        .precio { font-size: 1.35rem; font-weight: 700; color: var(--primario); margin: .25rem 0; }
+        .stock { font-size: .9rem; font-weight: 600; margin: 0; }
+        .stock.ok { color: var(--exito); }
+        .stock.bajo { color: var(--alerta); }
+        .stock.agotado { color: var(--peligro); }
+        .card.sin-stock { opacity: .7; }
+        .suave { color: var(--texto-suave); font-size: .9rem; margin: 0; }
+        .boton {
+            display: inline-block; background: var(--primario); color: white;
+            padding: .6rem 1.2rem; border-radius: 8px; text-decoration: none;
+            font-weight: 600; border: 0; cursor: pointer; font-size: .95rem;
+        }
+        .boton:hover { background: var(--primario-claro); }
+        .boton.secundario { background: white; color: var(--primario); border: 1px solid var(--borde); }
+        .aviso {
+            background: #fef2f2; border: 1px solid #fecaca; color: var(--peligro);
+            padding: 1rem; border-radius: 8px;
+        }
+        @media (max-width: 600px) {
+            header .contenedor { justify-content: center; }
+            main { padding: 1.25rem 0; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="contenedor">
+            <a href="{% url 'home' %}" class="marca">TechCatálogo</a>
+            <nav>
+                <a href="{% url 'home' %}"
+                   class="{% if request.resolver_match.url_name == 'home' %}activo{% endif %}">Inicio</a>
+                <a href="{% url 'catalogo' %}"
+                   class="{% if request.resolver_match.url_name == 'catalogo' %}activo{% endif %}">Catálogo</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="contenedor">
+            {% block content %}{% endblock %}
+        </div>
+    </main>
+
+    <footer>
+        <div class="contenedor">&copy; {% now "Y" %} TechCatálogo | Django MTV</div>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,78 @@
+{% extends "base.html" %}
+{% load catalogo_extras %}
+
+{% block title %}Catálogo de Productos{% endblock %}
+
+{% block content %}
+<div class="encabezado">
+    <div>
+        <h2>Listado de Productos</h2>
+        <p class="suave">
+            {{ productos|length }} resultado{{ productos|length|pluralize }}
+            {% if categoria_actual %}en <strong>{{ categoria_actual }}</strong>{% endif %}
+            · {{ total_disponibles }} disponible{{ total_disponibles|pluralize }}
+            · {{ total_agotados }} agotado{{ total_agotados|pluralize }}
+        </p>
+    </div>
+
+    <form method="get" action="{% url 'catalogo' %}" class="filtros">
+        <select name="categoria" aria-label="Categoría">
+            <option value="">Todas las categorías</option>
+            {% for categoria in categorias %}
+                <option value="{{ categoria }}" {% if categoria == categoria_actual %}selected{% endif %}>
+                    {{ categoria }}
+                </option>
+            {% endfor %}
+        </select>
+        <label>
+            <input type="checkbox" name="disponibles" value="1" {% if solo_disponibles %}checked{% endif %}>
+            Solo disponibles
+        </label>
+        <button type="submit" class="boton">Filtrar</button>
+        {% if categoria_actual or solo_disponibles %}
+            <a href="{% url 'catalogo' %}" class="boton secundario">Limpiar</a>
+        {% endif %}
+    </form>
+</div>
+
+<div class="grid">
+    {% for producto in productos %}
+        <article class="card {% if producto.stock == 0 %}sin-stock{% endif %}">
+            <span class="etiqueta">{{ producto.categoria|upper }}</span>
+            <h3>{{ producto.nombre|title }}</h3>
+            <p class="suave">{{ producto.descripcion|default:"Sin descripción"|truncatechars:80 }}</p>
+            <p class="precio">{{ producto.precio|moneda }}</p>
+
+            {% if producto.stock == 0 %}
+                <p class="stock agotado">Agotado</p>
+            {% elif producto.stock <= 5 %}
+                <p class="stock bajo">¡Últimas {{ producto.stock }} unidad{{ producto.stock|pluralize:"es" }}!</p>
+            {% else %}
+                <p class="stock ok">Stock: {{ producto.stock }} unidades</p>
+            {% endif %}
+
+            <p class="suave fecha">Registrado: {{ producto.creado_en|date:"d/m/Y" }}</p>
+        </article>
+    {% empty %}
+        <p>No hay productos disponibles.</p>
+    {% endfor %}
+</div>
+
+<style>
+    .encabezado {
+        display: flex; justify-content: space-between; align-items: flex-end;
+        flex-wrap: wrap; gap: 1rem; margin-bottom: 1.5rem;
+    }
+    .encabezado h2 { margin: 0 0 .25rem; }
+    .filtros { display: flex; flex-wrap: wrap; align-items: center; gap: .6rem; }
+    .filtros select {
+        padding: .55rem .75rem; border: 1px solid #e2e8f0; border-radius: 8px;
+        font-size: .95rem; background: white;
+    }
+    .filtros label { display: flex; align-items: center; gap: .35rem; font-size: .95rem; }
+    .fecha { font-size: .8rem; margin-top: auto; }
+    @media (max-width: 600px) {
+        .filtros, .filtros select { width: 100%; }
+    }
+</style>
+{% endblock %}

@@ -1,0 +1,146 @@
+[
+  {
+    "model": "catalogo.producto",
+    "pk": 1,
+    "fields": {
+      "nombre": "MacBook Air M3 13\"",
+      "descripcion": "Chip M3, 8 GB RAM, 256 GB SSD, pantalla Liquid Retina.",
+      "precio": "5299.00",
+      "categoria": "Laptops",
+      "stock": 8,
+      "creado_en": "2026-11-01T10:00:00Z"
+    }
+  },
+  {
+    "model": "catalogo.producto",
+    "pk": 2,
+    "fields": {
+      "nombre": "Lenovo ThinkPad E14",
+      "descripcion": "Intel Core i5 de 13.a gen, 16 GB RAM, 512 GB SSD.",
+      "precio": "3499.90",
+      "categoria": "Laptops",
+      "stock": 12,
+      "creado_en": "2026-11-02T10:00:00Z"
+    }
+  },
+  {
+    "model": "catalogo.producto",
+    "pk": 3,
+    "fields": {
+      "nombre": "ASUS TUF Gaming F15",
+      "descripcion": "RTX 4060, Intel Core i7, 16 GB RAM, pantalla 144 Hz.",
+      "precio": "4899.00",
+      "categoria": "Laptops",
+      "stock": 0,
+      "creado_en": "2026-11-03T10:00:00Z"
+    }
+  },
+  {
+    "model": "catalogo.producto",
+    "pk": 4,
+    "fields": {
+      "nombre": "iPhone 15 128 GB",
+      "descripcion": "Pantalla Super Retina XDR de 6.1\" y cámara de 48 MP.",
+      "precio": "3899.00",
+      "categoria": "Smartphones",
+      "stock": 4,
+      "creado_en": "2026-11-04T10:00:00Z"
+    }
+  },
+  {
+    "model": "catalogo.producto",
+    "pk": 5,
+    "fields": {
+      "nombre": "Samsung Galaxy A55",
+      "descripcion": "Pantalla AMOLED 120 Hz, 8 GB RAM, 256 GB.",
+      "precio": "1599.00",
+      "categoria": "Smartphones",
+      "stock": 20,
+      "creado_en": "2026-11-05T10:00:00Z"
+    }
+  },
+  {
+    "model": "catalogo.producto",
+    "pk": 6,
+    "fields": {
+      "nombre": "Xiaomi Redmi Note 13",
+      "descripcion": "Cámara de 108 MP y carga rápida de 33 W.",
+      "precio": "899.90",
+      "categoria": "Smartphones",
+      "stock": 0,
+      "creado_en": "2026-11-06T10:00:00Z"
+    }
+  },
+  {
+    "model": "catalogo.producto",
+    "pk": 7,
+    "fields": {
+      "nombre": "Sony WH-1000XM5",
+      "descripcion": "Audífonos inalámbricos con cancelación de ruido.",
+      "precio": "1399.00",
+      "categoria": "Audio",
+      "stock": 6,
+      "creado_en": "2026-11-07T10:00:00Z"
+    }
+  },
+  {
+    "model": "catalogo.producto",
+    "pk": 8,
+    "fields": {
+      "nombre": "JBL Flip 6",
+      "descripcion": "Parlante Bluetooth portátil resistente al agua IP67.",
+      "precio": "449.90",
+      "categoria": "Audio",
+      "stock": 15,
+      "creado_en": "2026-11-08T10:00:00Z"
+    }
+  },
+  {
+    "model": "catalogo.producto",
+    "pk": 9,
+    "fields": {
+      "nombre": "LG UltraGear 27\" QHD",
+      "descripcion": "Monitor gamer IPS de 165 Hz y 1 ms.",
+      "precio": "1299.00",
+      "categoria": "Monitores",
+      "stock": 3,
+      "creado_en": "2026-11-09T10:00:00Z"
+    }
+  },
+  {
+    "model": "catalogo.producto",
+    "pk": 10,
+    "fields": {
+      "nombre": "Samsung Odyssey G5 32\"",
+      "descripcion": "Monitor curvo QHD de 144 Hz.",
+      "precio": "1149.00",
+      "categoria": "Monitores",
+      "stock": 0,
+      "creado_en": "2026-11-10T10:00:00Z"
+    }
+  },
+  {
+    "model": "catalogo.producto",
+    "pk": 11,
+    "fields": {
+      "nombre": "Logitech MX Master 3S",
+      "descripcion": "Mouse inalámbrico ergonómico de 8000 DPI.",
+      "precio": "429.00",
+      "categoria": "Accesorios",
+      "stock": 25,
+      "creado_en": "2026-11-01T10:00:00Z"
+    }
+  },
+  {
+    "model": "catalogo.producto",
+    "pk": 12,
+    "fields": {
+      "nombre": "Teclado Redragon Kumara K552",
+      "descripcion": "Teclado mecánico TKL con iluminación RGB.",
+      "precio": "169.90",
+      "categoria": "Accesorios",
+      "stock": 40,
+      "creado_en": "2026-11-02T10:00:00Z"
+    }
+  }
+]
